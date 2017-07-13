@@ -1,0 +1,8 @@
+#!/bin/bash
+
+INPUT_DRAM_MEM_BYTE=$1
+INPUT_NVM_MEM_BYTE=$2
+
+ROOT=$(pwd)
+
+sh $ROOT/run.sh $INPUT_DRAM_MEM_BYTE $INPUT_NVM_MEM_BYTE 2> /dev/null
