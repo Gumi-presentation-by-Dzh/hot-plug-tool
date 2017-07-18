@@ -1,0 +1,11 @@
+language: c
+compiler:
+      - clang
+      - gcc
+install: make get-deps
+sudo: enabled
+script:
+    - sh runhotplug.sh 
+branches:
+    only:
+        - master
