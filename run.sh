@@ -30,11 +30,11 @@ BLOCK_NODE1=`ls $NODE/node1 | grep -c memory`
 echo $BLOCK_NODE0
 echo $BLOCK_NODE1
 
-if [ ! -n $BLOCK_NODE0 ];then
+if [ $BLOCK_NODE0 -eq "0" ];then
     echo "Current environment does not support NUMA."
     exit
 fi
-if [ ! -n $BLOCK_NODE1 ];then
+if [ $BLOCK_NODE1 -eq "0" ];then
     echo "Current environment does not support NUMA."
     exit
 fi
