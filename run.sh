@@ -19,6 +19,7 @@ if [ ! -n $BLOCK ];then
     exit
 fi
 echo "The current environment, MEM block size:" $BLOCKSIZE_10_MB "MB"
+echo "The current environment, MEM block size:" $((16#$BLOCKSIZE_16)) "MB"
 echo "The total number of MEM block exposed in the current environment:" $BLOCK
 
 #记录node节点信息
