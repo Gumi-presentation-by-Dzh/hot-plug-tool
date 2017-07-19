@@ -18,7 +18,7 @@ BLOCK=`ls $MEM | grep -c memory`
 ((BLOCKSIZE_temp=16#$BLOCKSIZE_16))
 BLOCKSIZE_10=$BLOCKSIZE_temp
 BLOCKSIZE_10_MB=$(printf "%d" $((BLOCKSIZE_temp/1024/1024)))
-#echo "The current environment, MEM block size(16 hexadecimal):" $BLOCKSIZE_16
+echo "The current environment, MEM block size(16 hexadecimal):" $BLOCKSIZE_16
 
 if [ ! -n $BLOCK ];then
     echo "The current environment does not support hot-plug."
