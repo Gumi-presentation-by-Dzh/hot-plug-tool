@@ -33,11 +33,10 @@ echo $BLOCK_NODE1
 if [ ! -n $BLOCK_NODE0 ];then
     echo "Current environment does not support NUMA."
     exit
-else
-    if [ ! -n $BLOCK_NODE1 ];then
-        echo "Current environment does not support NUMA."
-        exit
-    fi
+fi
+if [ ! -n $BLOCK_NODE1 ];then
+    echo "Current environment does not support NUMA."
+    exit
 fi
 
 #计算各个节点上需要关闭多少block
