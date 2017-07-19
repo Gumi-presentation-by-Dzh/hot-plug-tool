@@ -18,8 +18,7 @@ if [ ! -n $BLOCK ];then
     echo "The current environment does not support hot-plug."
     exit
 fi
-echo "The current environment, MEM block size:" $BLOCKSIZE_10_MB "MB"
-echo "The current environment, MEM block size:" $((16#$BLOCKSIZE_16)) "MB"
+#echo "The current environment, MEM block size:" $BLOCKSIZE_10_MB "MB"
 echo "The total number of MEM block exposed in the current environment:" $BLOCK
 
 #记录node节点信息
@@ -44,6 +43,7 @@ NODE1_OFF=$(printf "%d" $((BLOCK_NODE1-NODE1_SECTION_NEED)))
 
 if [ $INPUT_DRAM_MEM_BYTE -ne "0" ];
 then
+echo "The current environment, MEM block size:" $BLOCKSIZE_10_MB "MB"
 echo "Input DRAM mem size(BYTE): "$INPUT_DRAM_MEM_BYTE 
 echo "Input NVM mem size(BYTE): "$INPUT_NVM_MEM_BYTE 
 echo "After hot plug, online DRAM seciton num is: "$NODE0_SECTION_NEED
