@@ -1,0 +1,8 @@
+language: c
+compiler: gcc
+install: true
+dist: trusty
+sudo: required
+script:
+  - sh runhotplug.sh 500000000 50000000
+  - sh runhotplug.sh 0
