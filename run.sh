@@ -3,17 +3,34 @@
 NODE=/sys/devices/system/node
 MEM=/sys/devices/system/memory
 BLOCKSIZE_16=$(cat /sys/devices/system/memory/block_size_bytes)
+
+if [ ! -n $BLOCKSIZE_16 ];then
+    echo "The block_size_bytes is unknown, please check /sys/devices/system/memory/block_size_bytes file and replace the shell var."
+    exit
+fi
+
 BLOCK=`ls $MEM | grep -c memory`
 ((BLOCKSIZE_temp=16#$BLOCKSIZE_16))
 BLOCKSIZE_10=$BLOCKSIZE_temp
 BLOCKSIZE_10_MB=$(printf "%d" $((BLOCKSIZE_temp/1024/1024)))
 #echo "The current environment, MEM block size(16 hexadecimal):" $BLOCKSIZE_16
+
+if [ ! -n $BLOCK ];then
+    echo "The current environment does not support hot-plug."
+    exit
+fi
+
 echo "The current environment, MEM block size:" $BLOCKSIZE_10_MB "MB"
 echo "The total number of MEM block exposed in the current environment:" $BLOCK
 
 #记录node节点信息
 BLOCK_NODE0=`ls $NODE/node0 | grep -c memory`
 BLOCK_NODE1=`ls $NODE/node1 | grep -c memory`
+
+if [ ! -n $BLOCK_NODE0 ]; then
+    echo "Current environment does not support NUMA."
+    exit
+fi
 
 #计算各个节点上需要关闭多少block
 INPUT_DRAM_MEM_BYTE=$1
